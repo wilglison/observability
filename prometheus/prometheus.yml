@@ -1,0 +1,23 @@
+global:
+  scrape_interval: 5s
+  evaluation_interval: 5s
+  scrape_timeout: 5s
+  external_labels:
+    monitor: 'node'
+
+scrape_configs:
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['prometheus:9090']
+  
+  - job_name: 'monitoramento-nodes'
+    static_configs:
+      - targets: ['node-exporter:9100']
+
+  - job_name: 'monitoramento-docker'
+    static_configs:
+      - targets: ['docker-exporter:9417']
+
+  - job_name: 'monitoramento-juice-shop'
+    static_configs:
+      - targets: ['juiceshop:3000']
